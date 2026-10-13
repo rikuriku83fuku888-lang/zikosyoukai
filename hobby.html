@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="音楽、バスケ観戦、カフェ、映画など、好きなものを10枚の画像で紹介します。">
+  <title>HOBBY GALLERY | MY PORTFOLIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts/menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="index.html" aria-label="MY PORTFOLIO ホーム">MY PORTFOLIO</a>
+      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="メニューを開く" hidden>
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav class="site-nav" id="site-navigation" aria-label="メインナビゲーション">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">HOME</a></li>
+          <li><a class="nav-link" href="hobby.html" aria-current="page">HOBBY GALLERY</a></li>
+          <li><a class="nav-link" href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero hero-hobby" aria-labelledby="hobby-title">
+      <!-- 提供された背景画像：PC・スマホ共通で表示 -->
+      <picture class="hero-picture">
+        <img src="images/imgo.jpg" alt="" width="800" height="447" fetchpriority="high">
+      </picture>
+      <div class="container"><div class="hero-copy">
+        <h1 id="hobby-title">Things I Love</h1>
+        <p class="hero-subtitle english">— A little gallery of my daily life —</p>
+      </div></div>
+    </section>
+    <section class="section" aria-labelledby="hobbies-title">
+      <div class="container">
+        <div class="section-heading"><h2 id="hobbies-title">MY HOBBIES</h2><p>私の好きなこと</p></div>
+        <!-- 提供された趣味1〜10の画像を番号順に掲載する -->
+        <!-- 詳細画面は要件にないため、リンクではなく紹介リストとして実装する。 -->
+        <ol class="hobby-grid">
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-01.webp" alt="レコードが並ぶ写真" loading="lazy">
+            </div>
+            <h3>Music</h3>
+            <p class="hobby-category">音楽</p>
+            <p>さまざまなレコード</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-02.webp" alt="NBA選手が並ぶバスケットボールの画像" loading="lazy">
+            </div>
+            <h3>Basketball</h3>
+            <p class="hobby-category">バスケ観戦</p>
+            <p>NBAのバスケットボール</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-03.webp" alt="窓際に席と観葉植物が並ぶカフェ" loading="lazy">
+            </div>
+            <h3>Cafés</h3>
+            <p class="hobby-category">カフェ</p>
+            <p>木のぬくもりがあるカフェ</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-04.webp" alt="木造の広い室内に本棚が並ぶ写真" loading="lazy">
+            </div>
+            <h3>Books</h3>
+            <p class="hobby-category">本</p>
+            <p>たくさんの本が並ぶ空間</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-05.webp" alt="モンスターエナジーの缶が並ぶ写真" loading="lazy">
+            </div>
+            <h3>Drinks</h3>
+            <p class="hobby-category">ドリンク</p>
+            <p>モンスターエナジー</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-06.webp" alt="青空の下に広がる山と草原" loading="lazy">
+            </div>
+            <h3>Nature</h3>
+            <p class="hobby-category">自然</p>
+            <p>山と草原の風景</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-07.webp" alt="夜景を望むガラス張りのエスカレーター" loading="lazy">
+            </div>
+            <h3>Night View</h3>
+            <p class="hobby-category">夜景</p>
+            <p>高い場所から見る街の光</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-08.webp" alt="チャーリー・プースのアルバム画像" loading="lazy">
+            </div>
+            <h3>Charlie Puth</h3>
+            <p class="hobby-category">音楽</p>
+            <p>チャーリー・プース</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-09.webp" alt="Marvel’s Spider-Man 2のゲーム画像" loading="lazy">
+            </div>
+            <h3>Spider-Man 2</h3>
+            <p class="hobby-category">ゲーム</p>
+            <p>Marvel’s Spider-Man 2</p>
+          </li>
+          <li class="hobby-item">
+            <div class="hobby-image">
+              <img src="images/hobby-10.webp" alt="アベンジャーズ／エンドゲームの映画ポスター" loading="lazy">
+            </div>
+            <h3>Avengers</h3>
+            <p class="hobby-category">映画</p>
+            <p>アベンジャーズ／エンドゲーム</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><small>© 2026 福間陸翔 All Rights Reserved.</small></div></footer>
+</body>
+</html>

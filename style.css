@@ -1,0 +1,1262 @@
+/* 指定パレットと共通寸法。ページ固有の数値を増やさず全ページで共有する。 */
+/* 全ページ共通：色・最大幅・角丸・アニメーション時間の設定 */
+:root {
+  --base: #fdfbf7;
+  --surface: #f5efe6;
+  --accent: #c8956d;
+  --text: #3d3936;
+  --muted: #7a7370;
+  --line: #e8dfd3;
+  --content-width: 1200px;
+  --radius: 12px;
+  --photo-radius: 20px;
+  --duration: 0.3s;
+  font-size: 100%;
+}
+
+/* 全ページ共通：基本設定（サイズの計算方法・本文・画像） */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--base);
+  color: var(--text);
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.05em;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* 全ページ共通：リンクとボタンのタップ時の表示 */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 1px;
+}
+
+a,
+button {
+  transition:
+    background-color var(--duration),
+    color var(--duration),
+    border-color var(--duration);
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 5px;
+}
+
+/* 全ページ共通：閉じたメニューなど、hidden属性のある要素を非表示にする */
+[hidden] {
+  display: none !important;
+}
+
+/* 全ページ共通：内容を中央に配置し、左右の余白と最大幅を決める */
+.container {
+  width: min(var(--content-width), calc(100% - 64px));
+  margin-inline: auto;
+}
+
+/* 全ページ共通：英語ラベルのフォント */
+.english {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.1em;
+}
+
+/* 全ページ共通：各セクションの余白・背景・英語と日本語の見出し */
+.section {
+  padding-block: 100px;
+}
+
+.section-soft {
+  background: var(--surface);
+}
+
+.section-heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  color: var(--accent);
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  overflow-wrap: anywhere;
+}
+
+.section-heading p {
+  margin-top: 8px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* 全ページ共通：見出しの上に置く小さな英語ラベル */
+.eyebrow {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+}
+
+/* 全ページ共通：写真の説明や補足文 */
+.caption {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.section-soft .caption {
+  color: var(--text);
+}
+
+/* 全ページ共通：キーボード操作で表示する「本文へ移動」リンク */
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  transform: translateY(-180%);
+  padding: 12px 24px;
+  background: var(--base);
+  z-index: 10;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ロゴは見出しにせず、各ページの主題をh1とする。 */
+/* 全ページ共通：ページ上部のヘッダー */
+.site-header {
+  background: var(--base);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ヘッダー内：ロゴとナビゲーションの横並び配置 */
+.header-inner {
+  width: calc(100% - 64px);
+  min-height: 73px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* ヘッダー内：「MY PORTFOLIO」の文字ロゴ */
+.site-logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+/* ヘッダー内：HOME・HOBBY GALLERY・CONTACTのリンク一覧 */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+/* ナビゲーション：リンクの下に表示する線 */
+.nav-link::after {
+  position: absolute;
+  content: "";
+  inset: auto 0 3px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration);
+}
+
+/* ナビゲーション：マウスを重ねたとき・フォーカス時・現在ページの下線 */
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.nav-link[aria-current="page"] {
+  font-weight: 600;
+}
+
+/* スマホメニュー：開閉ボタンの基本デザイン（表示の切り替えはJavaScript） */
+.menu-toggle {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+  color: var(--text);
+}
+
+.menu-toggle:hover {
+  background: var(--surface);
+}
+
+/* スマホメニュー：ボタン内の3本線 */
+.menu-icon {
+  display: grid;
+  gap: 5px;
+  width: 22px;
+  margin: auto;
+}
+
+.menu-icon span {
+  width: 22px;
+  height: 1px;
+  background: var(--text);
+  transition:
+    transform var(--duration),
+    opacity var(--duration);
+}
+
+/* スマホメニュー：開いているときに3本線を×印へ変える */
+.menu-toggle[aria-expanded="true"] .menu-icon span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-icon span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* 全ページ共通：ヘッダー下の「制作見本」の案内文 */
+.draft-note {
+  padding: 12px 24px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* 本番写真もpictureの大小画像を差し替えるだけで使用できる。 */
+/* 全ページ共通：ページ先頭の大きな背景画像とタイトルのエリア */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 450px;
+  padding-block: 48px;
+  isolation: isolate;
+  text-align: center;
+}
+
+/* HOME限定：先頭の画像エリアの高さ */
+.hero-home {
+  min-height: 600px;
+  padding-block: 64px;
+}
+
+/* 先頭エリア：背景画像の位置と表示範囲 */
+.hero-picture {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 先頭エリア：タイトルと説明文を載せるパネル */
+.hero-copy {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+}
+
+/* HOME：指定されたベージュ背景。タイトルはカンプに合わせて直接配置 */
+.hero-home {
+  background: var(--surface);
+}
+
+.hero-home .hero-copy {
+  width: min(100%, 1000px);
+}
+
+/* HOME：NBAのメイン画像。元画像以上に拡大せず、スマホでは横幅に合わせる */
+.home-main-image {
+  display: block;
+  width: min(100%, 240px);
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto 24px;
+}
+
+/* HOME：タイトル上の「STUDENT PORTFOLIO」の余白 */
+.hero-kicker {
+  margin-bottom: 24px;
+}
+
+/* 先頭エリア：各ページのメインタイトル */
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 4.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+/* 先頭エリア：メインタイトルの下のサブコピー */
+.hero-subtitle {
+  margin-top: 16px;
+  font-size: 1.25rem;
+}
+
+/* HOME：サブコピーの下の補足文 */
+.hero-description {
+  margin-top: 16px;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* HOME：先頭エリアのHOBBY GALLERYボタンの上余白 */
+.hero .button {
+  margin-top: 0;
+}
+
+/* 先頭エリア：右下に置く仮画像の注記 */
+.hero-credit {
+  position: absolute;
+  right: 24px;
+  bottom: 16px;
+  padding: 4px 8px;
+  font-size: 0.875rem;
+  background: var(--base);
+}
+
+/* 全ページ共通：ページ移動用ボタンの基本デザイン */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 48px;
+  padding: 12px 32px;
+  background: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  color: var(--base);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  background: var(--surface);
+  border-color: var(--text);
+  color: var(--text);
+}
+
+/* HOME：CONTACTへ進む枠線タイプのボタン */
+.button-secondary {
+  background: transparent;
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.button-secondary:hover {
+  background: var(--accent);
+}
+
+.button-arrow {
+  font-size: 1.25rem;
+}
+
+/* HOME：「このサイトについて」の見出しと説明文 */
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.about-layout .section-heading {
+  margin-bottom: 0;
+}
+
+.about-copy {
+  max-width: 640px;
+}
+
+.about-copy p + p {
+  margin-top: 24px;
+}
+
+/* HOME：「プロフィール」の写真と表の配置 */
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 560px);
+  align-items: center;
+  gap: 48px;
+  max-width: 888px;
+  margin-inline: auto;
+}
+
+/* HOME：プロフィール写真の比率と角丸 */
+.profile-photo img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: var(--photo-radius);
+}
+
+/* 写真共通：画像の下にある説明文の余白 */
+figcaption {
+  margin-top: 16px;
+}
+
+/* HOME：NAME・SCHOOL・HOBBY・SKILL・EMAILの表 */
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.profile-table caption {
+  text-align: left;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+}
+
+/* プロフィール表：項目名と内容に共通する余白と区切り線 */
+.profile-table th,
+.profile-table td {
+  position: relative;
+  padding-block: 20px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+/* プロフィール表：左側の英語の項目名 */
+.profile-table th {
+  width: 126px;
+  padding-right: 16px;
+  font-family: "Poppins", sans-serif;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.profile-table td {
+  overflow-wrap: anywhere;
+}
+
+/* セルの下線を左から右に伸ばす。行内のフォーカスでも同じ状態にする。 */
+.profile-table th::after,
+.profile-table td::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration);
+}
+
+.profile-table tr:hover th::after,
+.profile-table tr:hover td::after,
+.profile-table tr:focus-within th::after,
+.profile-table tr:focus-within td::after {
+  transform: scaleX(1);
+}
+
+/* HOME：プロフィール下のHOBBY GALLERY・CONTACTボタンの配置 */
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* HOME：学年など未設定の項目に付ける補足表示 */
+.pending {
+  font-size: 0.875rem;
+}
+
+/* 趣味は768px以下でも例外として2列。カードは操作要素ではない。 */
+/* HOBBY GALLERY：趣味一覧の前にある案内文 */
+.gallery-intro {
+  margin-top: -24px;
+  margin-bottom: 32px;
+}
+
+/* HOBBY GALLERY：趣味10項目の一覧（PCは5列） */
+.hobby-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1116px;
+  list-style: none;
+}
+
+/* HOBBY GALLERY：趣味の画像枠・正方形の写真・ホバー時の枠線 */
+.hobby-image {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: border-color var(--duration);
+}
+
+.hobby-image img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.hobby-item:hover .hobby-image {
+  border-color: var(--accent);
+}
+
+/* HOBBY GALLERY：画像の下に表示する01〜10の番号 */
+.hobby-number {
+  display: block;
+  margin-top: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+/* HOBBY GALLERY：趣味のタイトルと説明文 */
+.hobby-item h3 {
+  margin-top: 4px;
+  font-family: "Poppins", "Noto Serif JP", serif;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.hobby-item p {
+  margin-top: 4px;
+  font-size: 0.875rem;
+}
+
+/* CONTACT：「FOLLOW ME」のSNS一覧（PCは3列） */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  max-width: 1076px;
+  margin-inline: auto;
+}
+
+/* CONTACT：Instagram・X・YouTubeそれぞれの枠と内容 */
+.social-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.social-card h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.social-card p {
+  font-size: 0.875rem;
+}
+
+.social-card a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  margin-top: auto;
+  font-size: 0.875rem;
+}
+
+/* CONTACT：SNS投稿・動画の埋め込み前に表示する仮の領域 */
+.social-placeholder {
+  min-height: 400px;
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+/* CONTACT：「思い出の場所」の所在地と地図の配置 */
+.access-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 500px);
+  gap: 32px;
+  align-items: start;
+  max-width: 992px;
+  margin-inline: auto;
+}
+
+/* CONTACT：施設名「羽田空港」と住所・交通手段の文字 */
+.access-details h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 24px;
+}
+
+.access-details address {
+  font-style: normal;
+}
+
+.access-details p + p {
+  margin-top: 16px;
+}
+
+/* CONTACT：羽田空港での思い出の文章と上の区切り線 */
+.memory-note {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+/* CONTACT：地図未設定時の仮表示用（現在の羽田空港の地図では未使用） */
+.map-placeholder {
+  min-height: 360px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--photo-radius);
+  background: var(--base);
+}
+
+/* CONTACT：埋め込みGoogleマップの大きさと角丸 */
+.map-frame {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border: 0;
+  border-radius: var(--photo-radius);
+}
+
+/* CONTACT：地図の下の案内文とGoogleマップへのリンク */
+.map-help {
+  margin-top: 16px;
+  font-size: 0.875rem;
+}
+
+.map-help a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* 全ページ共通：ページ最下部のコピーライト */
+.site-footer {
+  padding-block: 24px;
+  text-align: center;
+  background: var(--surface);
+  color: var(--muted);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.site-footer small {
+  font-size: inherit;
+}
+
+/* Figma参照：HOMEの先頭に2つのページ移動ボタンを並べる */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+/* Figma参照：CONTACTの先頭は他ページより低くする */
+.hero-contact {
+  min-height: 380px;
+}
+
+/* Figma参照：趣味を写真と説明をまとめたカードとして表示する */
+.hobby-item {
+  padding: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+/* CONTACT：見出しの補足文。未登録SNSの案内は各カード内に残す */
+.section-heading .section-intro {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* CONTACT：所在地と交通手段の英語ラベル */
+.access-label {
+  display: block;
+  margin-bottom: 4px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+/* 読み上げ用：表の説明を保ち、カンプにない見出しは画面から省く */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* HOME：カンプのメイン見出しの太さ */
+.hero-home h1 {
+  font-weight: 700;
+}
+
+/* HOBBY・CONTACT：先頭の補足文とセクション間隔 */
+.hero-hobby .hero-subtitle,
+.hero-contact .hero-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.hero-hobby ~ .section,
+.hero-contact ~ .section {
+  padding-block: 96px;
+}
+
+/* 趣味カード：日本語の短い項目名はスマホで表示する */
+.hobby-category {
+  display: none;
+}
+
+/* CONTACT：住所・交通手段・思い出の説明 */
+.access-details h3 {
+  font-size: 1.5rem;
+}
+
+.access-details address {
+  font-size: 0.9375rem;
+}
+
+.access-label {
+  font-size: 0.75rem;
+}
+
+.memory-note {
+  margin-top: 24px;
+  padding-top: 0;
+  border: 0;
+  font-size: 0.875rem;
+  line-height: 1.9;
+}
+
+/* 3列と5列の境界は要件未指定のため1024pxに設定。 */
+/* タブレット用：幅769px以上・1024px未満。見出し・趣味3列・余白を調整 */
+@media (769px <= width < 1024px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .hobby-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .profile-layout,
+  .about-layout,
+  .access-layout {
+    gap: 32px;
+  }
+
+  .social-card {
+    padding: 24px;
+  }
+
+  .header-inner,
+  .nav-list {
+    gap: 24px;
+  }
+}
+
+/* スマホ用：幅768px以下。ここから下の指定で通常の設定を上書きする */
+@media (max-width: 768px) {
+
+  /* Figmaのスマホ版：見出し下の短い線と趣味カードの内側余白 */
+  .section-heading::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 16px auto 0;
+    background: var(--accent);
+  }
+
+  .hobby-item {
+    padding: 10px;
+    text-align: left;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    margin-top: 24px;
+  }
+
+  .hero-actions .button {
+    margin-top: 0;
+  }
+
+  .about-copy {
+    text-align: left;
+  }
+
+  /* SNSは最新のPCカンプと同じ埋め込み枠を1列にする */
+  .social-grid {
+    gap: 20px;
+  }
+
+  /* 羽田空港の説明はスマホカンプのように独立したパネルにする */
+  .access-details {
+    padding: 22px;
+    background: var(--base);
+    border-radius: var(--photo-radius);
+  }
+
+  /* スマホ共通：左右の余白・セクションの間隔・見出しサイズ */
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .section {
+    padding-block: 64px;
+  }
+
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.625rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* スマホのヘッダー：左にロゴ、右に開閉ボタン、下にメニュー */
+  .header-inner {
+    min-height: 72px;
+    gap: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-block: 12px;
+  }
+
+  .site-logo {
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+  }
+
+  .menu-toggle {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* スマホのナビゲーション：リンクを縦に並べ、現在のページを強調 */
+  .site-nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-block: 16px;
+  }
+
+  .nav-link {
+    min-height: 48px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    overflow-wrap: anywhere;
+  }
+
+  .nav-link[aria-current="page"] {
+    background: var(--surface);
+  }
+
+  .nav-link::after {
+    left: 16px;
+    right: auto;
+    width: 48px;
+    bottom: 6px;
+  }
+
+  .draft-note {
+    text-align: left;
+  }
+
+  /* スマホの先頭エリア：画像・タイトル・注記を画面幅に合わせる */
+  .hero {
+    min-height: 360px;
+    padding-block: 48px 24px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .hero-home {
+    min-height: 480px;
+  }
+
+  .hero-copy {
+    padding: 0;
+  }
+
+  .hero h1 {
+    font-size: 2.125rem;
+    letter-spacing: 0.1em;
+    text-wrap: balance;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-kicker {
+    margin-bottom: 16px;
+  }
+
+  /* 通常フローに置き、文字拡大時に見出しやボタンと重ならないようにする。 */
+  .hero-credit {
+    position: static;
+    align-self: flex-end;
+    max-width: calc(100% - 48px);
+    margin-right: 24px;
+    font-size: 0.875rem;
+  }
+
+  .hero .button {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  /* スマホの本文：サイト紹介・プロフィール・Accessを1列にする */
+  .about-layout,
+  .profile-layout,
+  .access-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .about-layout > *,
+  .profile-layout > *,
+  .access-layout > * {
+    min-width: 0;
+  }
+
+  /* スマホのプロフィール：写真サイズと表の項目幅 */
+  .profile-photo {
+    max-width: 200px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .profile-table th {
+    width: 80px;
+    padding-right: 8px;
+  }
+
+  .profile-table th,
+  .profile-table td {
+    padding-block: 24px;
+  }
+
+  /* スマホのボタン：縦並びにし、横幅いっぱいの押しやすいサイズにする */
+  .profile-links {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+    min-height: 48px;
+    padding-inline: 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .button > span {
+    flex-shrink: 0;
+  }
+
+  /* スマホの趣味一覧：2列を維持し、間隔とタイトルサイズを調整 */
+  .hobby-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .gallery-intro {
+    margin-top: -8px;
+  }
+
+  .hobby-item h3 {
+    margin-top: 10px;
+    font-size: 0.8125rem;
+  }
+
+  /* スマホのSNS：3つのサービスを縦に並べる */
+  .social-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .social-card {
+    padding: 24px;
+  }
+
+  /* スマホの外部リンク：タップしやすい高さと折り返し */
+  .social-card a,
+  .map-help a {
+    min-height: 48px;
+    padding-block: 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .access-details address,
+  .memory-note {
+    overflow-wrap: anywhere;
+  }
+
+  /* スマホの地図：高さ300pxにする */
+  .map-frame {
+    height: 300px;
+  }
+
+  .map-placeholder {
+    min-height: 300px;
+  }
+  /* スマホカンプ：見出しの和文、カード、地図の寸法 */
+  .section-heading p {
+    font-size: 0.75rem;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+  }
+
+  .hero-hobby ~ .section,
+  .hero-contact ~ .section {
+    padding-block: 64px;
+  }
+
+  .home-main-image {
+    width: min(100%, 180px);
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-actions .button {
+    width: auto;
+    max-width: 100%;
+  }
+
+  .hobby-item {
+    background: var(--base);
+    border-radius: var(--photo-radius);
+    box-shadow: 0 4px 12px rgb(61 57 54 / 6%);
+  }
+
+  .hobby-category {
+    display: block;
+    color: var(--accent);
+  }
+
+  .hobby-item p {
+    font-size: 0.875rem;
+    line-height: 1.8;
+  }
+
+  .map-frame {
+    height: 260px;
+  }
+
+  .site-footer {
+    padding-block: 32px;
+    font-size: 0.6875rem;
+  }
+}
+
+/* 小型端末でも2列の趣味画像と本文16pxを保ち、外側の余白で幅を確保する。 */
+/* 小さいスマホ用：幅374px以下。左右の余白を減らして内容の幅を確保 */
+@media (max-width: 374px) {
+
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .hero-copy {
+    padding: 16px;
+  }
+
+  .hero h1 {
+    letter-spacing: 0.05em;
+  }
+
+  .draft-note {
+    padding-inline: 16px;
+  }
+
+  .hobby-grid {
+    column-gap: 8px;
+  }
+
+  .social-card {
+    padding: 16px;
+  }
+}
+
+/* 動きを減らす設定：端末側で指定されている場合はアニメーションを止める */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* CONTACT：YouTube動画。SNSカードの幅に合わせて表示する */
+.social-video {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 400px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--line);
+}
+
+/* SNS埋め込み：外部サービスの幅でカードが押し広げられるのを防ぐ */
+.social-card {
+  min-width: 0;
+}
+
+.social-embed {
+  width: 100%;
+  min-width: 0;
+  height: 400px;
+  overflow: auto;
+  border-radius: var(--radius);
+  background: var(--base);
+}
+
+.social-embed .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+/* 小さな英語ラベルは濃い文字色にして読みやすさを優先する */
+.profile-table th,
+.hobby-category {
+  color: var(--text);
+}
+
+/* SNSを3列にするタブレットでは動画の表示幅を確保する */
+@media (769px <= width < 1024px) {
+  .social-grid {
+    gap: 16px;
+  }
+
+  .social-card {
+    padding: 8px;
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="福間陸翔のポートフォリオ。坪内総合ビジネスカレッジ AI・IT学科で学んでいることやプロフィールを紹介します。">
+  <title>HOME | MY PORTFOLIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts/menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <!-- 共通ヘッダー。3ページを変更するときは同じ構造を維持する。 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="index.html" aria-label="MY PORTFOLIO ホーム">MY PORTFOLIO</a>
+      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="メニューを開く" hidden>
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav class="site-nav" id="site-navigation" aria-label="メインナビゲーション">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html" aria-current="page">HOME</a></li>
+          <li><a class="nav-link" href="hobby.html">HOBBY GALLERY</a></li>
+          <li><a class="nav-link" href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero hero-home" aria-labelledby="home-title">
+      <div class="container">
+        <div class="hero-copy">
+          <h1 id="home-title">MY PORTFOLIO</h1>
+          <p class="hero-subtitle english">Welcome to My Portfolio</p>
+          <p class="hero-description english">A Place to My Portfolio</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="section-heading">
+          <h2 id="about-title">ABOUT THIS SITE</h2>
+          <p>このサイトについて</p>
+        </div>
+        <div class="about-copy">
+          <p>このサイトは自己紹介のために作成したポートフォリオサイトです。私自身の紹介やすきなもの、連絡先をまとめています。ゆっくり見ていってください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="profile-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="profile-title">PROFILE</h2>
+          <p>プロフィール</p>
+        </div>
+        <div class="profile-layout">
+          <figure class="profile-photo">
+            <img src="images/profile.jpeg" alt="プロフィール画像：バスケットボール選手のシルエットとNBAのロゴ" width="314" height="449" loading="lazy">
+          </figure>
+          <div>
+            <table class="profile-table">
+              <caption class="visually-hidden">制作者の基本情報</caption>
+              <tbody>
+                <tr><th scope="row">NAME</th><td>福間陸翔</td></tr>
+                <tr><th scope="row">SCHOOL</th><td>坪内総合ビジネスカレッジ AI・IT学科<br>1年生</td></tr>
+                <tr><th scope="row">HOBBY</th><td>バスケ観戦・音楽・映画</td></tr>
+                <tr><th scope="row">SKILL</th><td>プログラム言語を学んでいます。</td></tr>
+                <!-- 公開用メールアドレス：リンクを付けず文字のみ表示 -->
+                <tr><th scope="row">EMAIL</th><td>rikuriku788027@icloud.com</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><small>© 2026 福間陸翔 All Rights Reserved.</small></div></footer>
+</body>
+</html>

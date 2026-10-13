@@ -1,0 +1,36 @@
+/*ヘッターカバー*/
+
+/* .sub-cover{
+    background-size: cover;
+    background-position: center bottom;
+    height: 528px;
+} */
+
+
+/* .font-englesh{
+    font-family: 'pleayaif Display';
+    font-weight: normal;
+}
+
+.page-title{
+    font-size:3rem;
+    text-slign: center;
+    margin-top:2rem;
+    line-height:1.4;
+} */
+ .main-nav{
+    display: grid;
+    justify-content: center;
+    gap: 1.5rem;
+    list-style: 2rem;
+ }
+
+ 
+ .page-header{
+    desplay:flex
+ }
+
+ 
+
+
+ 

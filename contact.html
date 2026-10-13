@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="好きなNBA関連のSNSと動画、初めての空の旅で訪れた羽田空港の思い出を紹介します。">
+  <title>CONTACT | MY PORTFOLIO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="scripts/menu.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="index.html" aria-label="MY PORTFOLIO ホーム">MY PORTFOLIO</a>
+      <button class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="メニューを開く" hidden>
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+      <nav class="site-nav" id="site-navigation" aria-label="メインナビゲーション">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="index.html">HOME</a></li>
+          <li><a class="nav-link" href="hobby.html">HOBBY GALLERY</a></li>
+          <li><a class="nav-link" href="contact.html" aria-current="page">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero hero-contact" aria-labelledby="contact-title">
+      <!-- 提供された背景画像：PC・スマホ共通で表示 -->
+      <picture class="hero-picture">
+        <img src="images/imgo.jpg" alt="" width="800" height="447" fetchpriority="high">
+      </picture>
+      <div class="container"><div class="hero-copy"><h1 id="contact-title">CONTACT</h1><p class="hero-subtitle">お気軽にご覧ください。</p></div></div>
+    </section>
+
+    <section class="section" aria-labelledby="social-title">
+      <div class="container">
+        <div class="section-heading"><h2 id="social-title">FOLLOW ME</h2><p>SNS</p><p class="section-intro">好きなNBA関連のアカウントと動画を紹介します</p></div>
+        <!-- 提供されたNBA関連のリンク。制作者本人のアカウントではありません。 -->
+        <div class="social-grid">
+          <article class="social-card">
+            <h3>Instagram</h3>
+            <!-- Instagram公式の埋め込み。利用できない場合も通常リンクを残す。 -->
+            <div class="social-embed">
+              <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/nbajpn/" data-instgrm-version="14">
+                <a href="https://www.instagram.com/nbajpn/">NBA Japan（@nbajpn）をInstagramで見る</a>
+              </blockquote>
+            </div>
+            <a href="https://www.instagram.com/nbajpn/" target="_blank" rel="noopener noreferrer">Instagramで見る（新しいタブ）</a>
+          </article>
+          <article class="social-card">
+            <h3>X</h3>
+            <!-- X公式タイムライン。スクリプトが読み込めない場合はリンクとして使える。 -->
+            <div class="social-embed">
+              <a class="twitter-timeline" data-height="400" data-dnt="true" href="https://twitter.com/NBA">NBA（@NBA）の投稿をXで見る</a>
+            </div>
+            <a href="https://x.com/NBA" target="_blank" rel="noopener noreferrer">Xで見る（新しいタブ）</a>
+          </article>
+          <article class="social-card">
+            <h3>YouTube</h3>
+            <!-- 提供された動画を埋め込む。再生できない場合も下のリンクから開ける。 -->
+            <iframe class="social-video" src="https://www.youtube.com/embed/sLWrGJjJIsM" title="紹介するYouTube動画" width="560" height="400" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <a href="https://youtu.be/sLWrGJjJIsM" target="_blank" rel="noopener noreferrer">YouTubeで見る（新しいタブ）</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" aria-labelledby="access-title">
+      <div class="container">
+        <div class="section-heading"><h2 id="access-title">ACCESS</h2><p>思い出の場所</p><p class="section-intro">私の思い出の場所を紹介します</p></div>
+        <div class="access-layout">
+          <div class="access-details">
+            <h3>羽田空港</h3>
+            <address>
+              <p><span class="access-label">ADDRESS</span>東京都大田区羽田空港</p>
+              <p><span class="access-label">ACCESS</span>京急線・東京モノレールでアクセスできます。</p>
+            </address>
+            <p class="caption">目的のターミナルに合わせて降車駅をご確認ください。<br><a href="https://www.tokyo-haneda.com/access/train/index.html">羽田空港の公式アクセス案内</a></p>
+            <div class="memory-note"><p>初めて飛行機に乗って到着したのが、羽田空港でした。初めての空の旅の到着地として、思い出に残っています。</p></div>
+          </div>
+          <div>
+            <!-- ターミナルは未指定のため空港全体を検索。代替リンクは常時表示する。 -->
+            <iframe class="map-frame" title="羽田空港の地図" src="https://www.google.com/maps?q=Haneda%20Airport%20Tokyo&amp;output=embed&amp;hl=ja" width="600" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <p class="map-help">地図を表示できない場合は、こちらから場所をご確認ください。<br><a href="https://www.google.com/maps/search/?api=1&amp;query=Haneda%20Airport%20Tokyo">Googleマップで羽田空港を開く <span aria-hidden="true">↗</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><small>© 2026 福間陸翔 All Rights Reserved.</small></div></footer>
+  <!-- 要件のSNSプラグインに必要な公式スクリプトのみ読み込む -->
+  <script async src="https://www.instagram.com/embed.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
